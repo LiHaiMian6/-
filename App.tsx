@@ -19,19 +19,22 @@ import { AdminUserView } from './components/views/AdminUserView';
 import { PaymentTrackingView } from './components/views/PaymentTrackingView';
 import { MonthlyRevenueView } from './components/views/MonthlyRevenueView';
 
+import { useLocalStorage } from './components/hooks/useLocalStorage';
+
 export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [currentView, setCurrentView] = useState('dashboard');
 
-  // App Data State
-  const [records, setRecords] = useState<CourseRecord[]>(INITIAL_RECORDS);
-  const [pricingRules, setPricingRules] = useState<PricingRule>(INITIAL_PRICING);
-  const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [students, setStudents] = useState<Student[]>(MOCK_STUDENTS);
-  const [users, setUsers] = useState<User[]>(MOCK_USERS);
+  // App Data State - Persisted
+  const [records, setRecords] = useLocalStorage<CourseRecord[]>('app_records', INITIAL_RECORDS);
+  const [pricingRules, setPricingRules] = useLocalStorage<PricingRule>('app_pricing', INITIAL_PRICING);
+  const [logs, setLogs] = useLocalStorage<LogEntry[]>('app_logs', INITIAL_LOGS);
+  const [students, setStudents] = useLocalStorage<Student[]>('app_students', MOCK_STUDENTS);
+  const [users, setUsers] = useLocalStorage<User[]>('app_users', MOCK_USERS);
+  const [classes, setClasses] = useLocalStorage<Class[]>('app_classes', []);
+  const [schedules, setSchedules] = useLocalStorage<ClassSchedule[]>('app_schedules', []);
+
   const [selectedStudentForBilling, setSelectedStudentForBilling] = useState<string | null>(null);
-  const [classes, setClasses] = useState<Class[]>([]);
-  const [schedules, setSchedules] = useState<ClassSchedule[]>([]);
 
   // Shared month state for all roles
   const [currentMonth, setCurrentMonth] = useState<string>(() => {
