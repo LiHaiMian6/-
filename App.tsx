@@ -26,13 +26,13 @@ export default function App() {
   const [currentView, setCurrentView] = useState('dashboard');
 
   // App Data State - Persisted
-  const [records, setRecords] = useLocalStorage<CourseRecord[]>('app_records', INITIAL_RECORDS);
-  const [pricingRules, setPricingRules] = useLocalStorage<PricingRule>('app_pricing', INITIAL_PRICING);
-  const [logs, setLogs] = useLocalStorage<LogEntry[]>('app_logs', INITIAL_LOGS);
-  const [students, setStudents] = useLocalStorage<Student[]>('app_students', MOCK_STUDENTS);
-  const [users, setUsers] = useLocalStorage<User[]>('app_users', MOCK_USERS);
-  const [classes, setClasses] = useLocalStorage<Class[]>('app_classes', []);
-  const [schedules, setSchedules] = useLocalStorage<ClassSchedule[]>('app_schedules', []);
+  const [records, setRecords] = useLocalStorage<CourseRecord[]>('app_records_v2', INITIAL_RECORDS);
+  const [pricingRules, setPricingRules] = useLocalStorage<PricingRule>('app_pricing_v2', INITIAL_PRICING);
+  const [logs, setLogs] = useLocalStorage<LogEntry[]>('app_logs_v2', INITIAL_LOGS);
+  const [students, setStudents] = useLocalStorage<Student[]>('app_students_v2', MOCK_STUDENTS);
+  const [users, setUsers] = useLocalStorage<User[]>('app_users_v2', MOCK_USERS);
+  const [classes, setClasses] = useLocalStorage<Class[]>('app_classes_v2', []);
+  const [schedules, setSchedules] = useLocalStorage<ClassSchedule[]>('app_schedules_v2', []);
 
   const [selectedStudentForBilling, setSelectedStudentForBilling] = useState<string | null>(null);
 
